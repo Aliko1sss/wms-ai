@@ -2,12 +2,12 @@
 builder = "NIXPACKS"
 
 [deploy]
-startCommand = "python -m alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+startCommand = "cd backend && python -m alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port $PORT"
 
-[nixpacks]
-# Указываем, что исходный код лежит в папке backend
-root = "backend"
+[variables]
+NIXPACKS_PYTHON_VERSION = "3.11"
 
-[nixpacks.python]
-# Явно указываем, что это Python проект
-version = "3.11"
+[phases.install]
+cmds = [
+  "cd backend && pip install -r requirements.txt"
+]
