@@ -24,6 +24,3 @@ alembic/versions/__pycache__/
 *.swo
 .DS_Store
 Thumbs.db
-
-# Docker (опционально)
-.dockerenv
